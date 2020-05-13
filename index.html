@@ -1,11 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fjalla+One|Raleway&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Code Quiz</h1>
+
+<!-- The first screen user sees. Nothing else will be visible. Timer starts when clicked -->
+      <div id="start-btn">
+        <button class="btn btn-primary">Start Quiz</button>
+      </div>
+
+      <!-- Appears after user clicks "Start Quiz" -->
+      <div class="questions-section">
+
+        <div class="row questions-header">
+          <!-- Automatically update the first blank -->
+          <h2>Question __ of 10 </h2>
+        </div>
+
+        <div class="row questions-body">
+        <div class="col col-sm-12" id="question"></div>
+        <!-- Multiple choices, divided into 2 columns -->
+          <div class="col col-sm-12 col-md-6" id="left-answers"></div>
+          <div class="col col-sm-12 col-md-6" id="right-answers"></div>
+        </div>
+      </div>
+<!-- Game over message/image div -->
+      <div id="game-over-screen">
+      </div>
+<!-- Save initials screen -->
+      <div id="save-initials">
+        
+      </div>
+
+      <!-- Timer section -->
+<div id="timer">
+  
+</div>
+    </div>
+  </body>
 </html>
