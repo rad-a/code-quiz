@@ -15,48 +15,51 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css?family=Fjalla+One|Raleway&display=swap"
+      rel="stylesheet"
+    /> -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto+Slab&display=swap"
       rel="stylesheet"
     />
   </head>
 
   <body>
     <div class="container">
-      <h1>Code Quiz</h1>
+      <h1>JavaScript Fundamentals Quiz</h1>
+      <p>This is a timed quiz with 10 minutes on the clock. Try to complete the quiz before the timer runs out. For each incorrect answer, fifteen seconds is subtracted from the timer.</p>
+      <p>You will be able to save your initials and score upon completion of the quiz.</p>
+      
+    <p>Click the <span>Start</span> button to get started.</p>
 
-<!-- The first screen user sees. Nothing else will be visible. Timer starts when clicked -->
-      <div id="start-btn">
-        <button class="btn btn-primary">Start Quiz</button>
-      </div>
+      <!-- The first screen user sees. Nothing else will be visible. Timer starts when clicked -->
 
-      <!-- Appears after user clicks "Start Quiz" -->
-      <div class="questions-section">
+      <button class="btn btn-primary" id="start-btn">Start</button>
 
-        <div class="row questions-header">
-          <!-- Automatically update the first blank -->
-          <h2>Question __ of 10 </h2>
+      <main id="main">
+        <div class="quiz-section">
+          <h4>Question of 10</h4>
+          <p id="question"></p>
+          <div class="row" id="answer-section">
+            <div class="col-sm-12 col-md-6" id="left-answers">
+              <button type="button" class="btn btn-block btn-secondary"></button>
+              <button type="button" class="btn btn-block btn-secondary"></button>
+              <button type="button" class="btn btn-block btn-secondary"></button>
+            </div>
+            <div class="col-sm-12 col-md-6" id="right-answers">
+              <button type="button" class="btn btn-block btn-secondary"></button>
+              <button type="button" class="btn btn-block btn-secondary"></button>
+              <button type="button" class="btn btn-block btn-secondary"></button>
+            </div>
+          </div>
+          <div id="quiz-footer">
+            <button type="button" class="btn btn-primary">Next</button>
+            <p id="countdown-timer"></p>
+          </div>
         </div>
-
-        <div class="row questions-body">
-        <div class="col col-sm-12" id="question"></div>
-        <!-- Multiple choices, divided into 2 columns -->
-          <div class="col col-sm-12 col-md-6" id="left-answers"></div>
-          <div class="col col-sm-12 col-md-6" id="right-answers"></div>
-        </div>
-      </div>
-<!-- Game over message/image div -->
-      <div id="game-over-screen">
-      </div>
-<!-- Save initials screen -->
-      <div id="save-initials">
-        
-      </div>
-
-      <!-- Timer section -->
-<div id="timer">
-  
-</div>
+      </main>
     </div>
   </body>
 </html>
