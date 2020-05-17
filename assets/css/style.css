@@ -45,6 +45,7 @@ h1 {
     height: 100%;
     display: flex;
     justify-content: center;
+
 }
 
 #start-btn {
@@ -72,7 +73,7 @@ h1 {
     border-radius: .25rem;
 }
 
-#answer-section button {
+#answer-section .btn {
 width: 100%;
 padding: 2%;
 margin-bottom: 1rem;

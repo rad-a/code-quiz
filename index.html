@@ -24,42 +24,51 @@
       href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto+Slab&display=swap"
       rel="stylesheet"
     />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   </head>
 
   <body>
     <div class="container">
       <h1>JavaScript Fundamentals Quiz</h1>
-      <p>This is a timed quiz with 10 minutes on the clock. Try to complete the quiz before the timer runs out. For each incorrect answer, fifteen seconds is subtracted from the timer.</p>
+      <p>This is a timed quiz with 1 minutes  30 seconds on the clock. Try to complete the quiz before the timer runs out. For each incorrect answer, five seconds is subtracted from the timer.</p>
       <p>You will be able to save your initials and score upon completion of the quiz.</p>
       
-    <p>Click the <span>Start</span> button to get started.</p>
+    <p id="hide-on-start">Click the <span>Start</span> button to get started.</p>
 
       <!-- The first screen user sees. Nothing else will be visible. Timer starts when clicked -->
 
       <button class="btn btn-primary" id="start-btn">Start</button>
 
-      <main id="main">
+      <main id="main" style="display: none;">
         <div class="quiz-section">
-          <h4>Question of 10</h4>
+          <h4>Question <span id="question-num"></span> of 10</h4>
           <p id="question"></p>
           <div class="row" id="answer-section">
             <div class="col-sm-12 col-md-6" id="left-answers">
+              <!-- <button type="button" class="btn btn-block btn-secondary"></button>
               <button type="button" class="btn btn-block btn-secondary"></button>
-              <button type="button" class="btn btn-block btn-secondary"></button>
-              <button type="button" class="btn btn-block btn-secondary"></button>
+  -->
             </div>
             <div class="col-sm-12 col-md-6" id="right-answers">
-              <button type="button" class="btn btn-block btn-secondary"></button>
-              <button type="button" class="btn btn-block btn-secondary"></button>
-              <button type="button" class="btn btn-block btn-secondary"></button>
+              <!-- <button type="button" class="btn btn-block btn-secondary"></button>
+              <button type="button" class="btn btn-block btn-secondary"></button> -->
+ 
             </div>
           </div>
-          <div id="quiz-footer">
-            <button type="button" class="btn btn-primary">Next</button>
-            <p id="countdown-timer"></p>
+          <div class="row" id="quiz-footer">
+            <div class="col" id="next-col">
+            <button type="button" class="btn btn-primary" id="next-question">Next</button>
+            </div>
+            <div class="col-xs-2" id="timer-col">
+            <p id="countdown-timer">___</p>
+            </div>
           </div>
         </div>
       </main>
     </div>
+
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
