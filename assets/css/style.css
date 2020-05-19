@@ -65,22 +65,33 @@ h1 {
 
 #question {
     background: #6B705A;
-    padding: 10px;
+    padding: 1%;
     justify-content: flex-start;
     color: white;
     font-size: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 3%;
     border-radius: .25rem;
 }
 
+ #answer-section {
+ position: relative;
+} 
+
 #answer-section .btn {
 width: 100%;
-padding: 2%;
-margin-bottom: 1rem;
+
+margin-bottom: 1%;
 color: whitesmoke;
 background-color: #646668;
 }
 
+.correct {
+    background-color: #2c8a2c!important;
+}
+
+.incorrect { 
+    background-color: #c52f2f!important;
+}
 #answer-section::after { 
     content: " ";
     display: block;
@@ -89,4 +100,8 @@ background-color: #646668;
     height: 2px;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+#quiz-footer {
+    position: relative;
 }

@@ -5,26 +5,27 @@ let timer = document.getElementById('countdown-timer');
 let questionNumber = document.getElementById('question-num');
 let quizDisplaySetting = quizSection.style.display;
 let questionBox = document.getElementById('question');
-let ansOptionsLeft = document.getElementById('left-answers');
-let ansOptionsRight = document.getElementById('right-answers');
+let answerOptions = document.getElementById('answers');
 let startInstruction = document.getElementById('hide-on-start');
 
 //Set countdown timer variables
 let counter = 0;
 let timeLeft = 90;
 
+
 //Declare initial index for questions
 let questionIndex = 0;
 
+let currentQuestion = 1;
 
 const quizQuestions = [
     {
-        question: 'How do you invoke a JavaScript function?',
-l_answers: [
+
+
+question: 'How do you invoke a JavaScript function?',
+answers: [
      'call.function()',
-     'function();'
-],
-r_answers: [
+     'function();',
      'function;',
      'none of the above'
 ],
@@ -32,11 +33,9 @@ correctAnswer: 1
     },
 {
 question: 'Which is not a method for declaring a variable?',
-l_answers: [
+answers: [
      'variable',
-     'var'
-],
-r_answers: [
+     'var',
      'const',
      'let'
 ],
@@ -44,11 +43,9 @@ correctAnswer: 0
 }, 
 {
     question: 'How do you create an array in JavaScript?',
-    l_answers: [
+    answers: [
          'createElement.array',
-         'array={}'
-    ],
-    r_answers:[
+         'array={}',
          'var x = [];',
         'var y = {}'
     ],
@@ -75,6 +72,7 @@ function convertSeconds(s) {
     let minutes = Math.floor(s / 60);
     let seconds = s % 60;
     return minutes + ':' + seconds;
+
 }
 
 
@@ -82,40 +80,65 @@ function convertSeconds(s) {
 startBtn.addEventListener('click', startQuiz)
 
 function startQuiz() {
+    questionNumber.innerHTML = currentQuestion;
     startBtn.style.display = 'none';
     startInstruction.style.display = 'none';
     quizSection.style.display = 'block';
-    questionBox.innerHTML = quizQuestions[questionIndex].question;
-    createAnswerButtons();
+    setQuestion();
+    }
+   
+
+    function setQuestion() {
+    
+        questionBox.innerHTML = quizQuestions[questionIndex].question;
+        createAnswerButtons();
     }
 
     //Create answer buttons and append to the correct <div> elements
     function createAnswerButtons() {
-      for (let i=0; i < quizQuestions[questionIndex].l_answers.length; i++) {
 
-let option = document.createElement('button');
-option.innerHTML=quizQuestions[questionIndex].l_answers[i];
-$(option).addClass('btn option-button');
-option.id = i;
-ansOptionsLeft.appendChild(option);
+        for (let i=0; i < quizQuestions[questionIndex].answers.length; i++) {
 
-      }  
+            const option = document.createElement('button');
+            option.innerHTML=quizQuestions[questionIndex].answers[i];
+            option.classList.add('option-button', 'btn');
+            option.id = i;
+            option.setAttribute('onclick', 'check(this)');
+            answerOptions.appendChild(option);
+            
+                  }  
+            
 
-      for (let i=0; i < quizQuestions[questionIndex].r_answers.length; i++) {
-
-        let option = document.createElement('button');
-        option.innerHTML=quizQuestions[questionIndex].r_answers[i];
-        $(option).addClass('btn option-button');
-        option.id = i;
-        ansOptionsRight.appendChild(option);
-
-    
-              }  
     }
 
-    $('.option-button').click(function() {
-        console.log(this.id);
-    });
+var score = '';
+var points = 5;
+    function check(ele) {
+const button_id = ele.id;
+if (button_id == quizQuestions[questionIndex].correctAnswer) {
+ele.classList.add('correct');
 
+} else{
+    ele.classList.add('incorrect');
+    timeLeft -= 5;
+}
+
+}
+
+
+
+nextBtn.addEventListener('click', function() {
+    reset();
+    questionIndex++;
+    setQuestion()
+        questionNumber.innerHTML= currentQuestion++;
+        
+})
+
+function reset() {
+    while (answerOptions.firstChild) {
+        answerOptions.removeChild(answerOptions.firstChild)
+    }
+}
 
     
