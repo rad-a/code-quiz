@@ -16,46 +16,74 @@
     />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
 
-
     <link
       href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto+Slab&display=swap"
       rel="stylesheet"
     />
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
   </head>
 
   <body>
     <div class="container">
       <h1>JavaScript Fundamentals Quiz</h1>
-      <p>This is a timed quiz with 1 minutes  30 seconds on the clock. Try to complete the quiz before the timer runs out. For each incorrect answer, five seconds is subtracted from the timer.</p>
-      <p>You will be able to save your initials and score upon completion of the quiz.</p>
-      
-    <p id="hide-on-start">Click the <span>Start</span> button to get started.</p>
+      <p>
+        This is a timed quiz with 1 minutes 30 seconds on the clock. Try to
+        complete the quiz before the timer runs out. For each incorrect answer,
+        five seconds is subtracted from the timer.
+      </p>
+      <p>
+        You will be able to save your initials and score upon completion of the
+        quiz.
+      </p>
+
+      <p id="hide-on-start">
+        Click the <span>Start</span> button to get started.
+      </p>
 
       <!-- The first screen user sees. Nothing else will be visible. Timer starts when clicked -->
 
       <button class="btn btn-primary" id="start-btn">Start</button>
 
       <main id="main" style="display: none;">
-        <div class="quiz-section">
-          <h4>Question <span id="question-num"></span> of 10</h4>
+        <div class="quiz-section quiz-box">
+          <h4>Question <span id="question-num"></span> of 5</h4>
           <p id="question"></p>
           <div class="row" id="answer-section">
-            <div class="col-sm-12" id="answers">
-
-            </div>
-
-            </div>
+            <div class="col-sm-12" id="answers"></div>
           </div>
-          <div class="row" id="quiz-footer">
-            <div class="col" id="next-col">
-            <button type="button" class="btn btn-primary" id="next-question">Next</button>
-            </div>
-            <div class="col-xs-2" id="timer-col">
+        </div>
+
+        <div class=" quiz-box" id="results-box">
+          <h4>Result:</h4>
+          <p>Correct: <span id="num_correct"></span> of 3</p>
+          <p id="time-spent"></p>
+          <p>
+            Enter your initials or username to save your score to the
+            scoreboard!
+          </p>
+          <label for="username" class="col-sm-4 col-form-label">Name</label>
+          <div class="col-sm-8">
+            <input id="username" type="text" />
+          </div>
+        </div>
+
+        <div class="row" id="quiz-footer">
+          <div class="col-sm-5" id="next-col">
+            <button type="button" class="btn btn-primary" id="next-question">
+              Next
+            </button>
+          </div>
+          <div class="col-sm-5" id="results-col">
+          <button type="button" class="btn btn-primary" id="get-results">
+            See Results
+          </button>
+        </div>
+          <div class="col" id="timer-col">
             <p id="countdown-timer">___</p>
-            </div>
           </div>
         </div>
       </main>

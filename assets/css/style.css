@@ -52,16 +52,20 @@ h1 {
     align-self: center;
 }
 
-.quiz-section {
+
+.quiz-box {
     /* visibility: hidden; */
     align-self: center;
-    height: 70%;
-    width: 90%;
+    width: 100%;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
+
+#results-box, #get-results {
+    display: none;
+    }
 
 #question {
     background: #6B705A;
@@ -105,3 +109,5 @@ background-color: #646668;
 #quiz-footer {
     position: relative;
 }
+
+

@@ -7,16 +7,24 @@ let quizDisplaySetting = quizSection.style.display;
 let questionBox = document.getElementById('question');
 let answerOptions = document.getElementById('answers');
 let startInstruction = document.getElementById('hide-on-start');
+let totalTime = document.getElementById('time-spent');
+let totalCorrect = document.getElementById('num_correct');
+let username = document.getElementById('username');
+let results = document.getElementById('results-box');
+let getResults = document.getElementById('get-results');
+
 
 //Set countdown timer variables
 let counter = 0;
-let timeLeft = 90;
+let timeLeft = 10;
 
 
 //Declare initial index for questions
 let questionIndex = 0;
 
 let currentQuestion = 1;
+
+
 
 const quizQuestions = [
     {
@@ -59,20 +67,12 @@ correctAnswer: 0
 //--WRITE FUNCTIONS--
 
 //start timer
-timer.innerHTML = convertSeconds(timeLeft);
+timer.innerHTML = timeLeft;
 setInterval(countTime, 1000); 
 
 function countTime() {
     counter++;
-    timer.innerHTML = convertSeconds(timeLeft - counter);
-}
-
-//Convert timer to minutes + seconds
-function convertSeconds(s) {
-    let minutes = Math.floor(s / 60);
-    let seconds = s % 60;
-    return minutes + ':' + seconds;
-
+    timer.innerHTML = timeLeft - counter;
 }
 
 
@@ -80,10 +80,11 @@ function convertSeconds(s) {
 startBtn.addEventListener('click', startQuiz)
 
 function startQuiz() {
-    questionNumber.innerHTML = currentQuestion;
+    questionNumber.innerHTML = currentQuestion++;
     startBtn.style.display = 'none';
     startInstruction.style.display = 'none';
     quizSection.style.display = 'block';
+    nextBtn.style.display='none';
     setQuestion();
     }
    
@@ -105,11 +106,21 @@ function startQuiz() {
             option.id = i;
             option.setAttribute('onclick', 'check(this)');
             answerOptions.appendChild(option);
-            
-                  }  
-            
+
+    
+                option.addEventListener('click', function () {
+                    if (nextBtn.style.display === "none" && quizQuestions.length > questionIndex + 1) {
+                     nextBtn.style.display="block";
+                    } else {
+                        nextBtn.style.display = "none"
+                    }
+                })
+          
+                  
+    }
 
     }
+
 
 var score = '';
 var points = 5;
@@ -126,14 +137,16 @@ ele.classList.add('correct');
 }
 
 
-
 nextBtn.addEventListener('click', function() {
-    reset();
-    questionIndex++;
-    setQuestion()
-        questionNumber.innerHTML= currentQuestion++;
+
+               reset();
+        questionIndex++;
+        setQuestion()
+            questionNumber.innerHTML= currentQuestion++;
+            nextBtn.style.display = "none";
         
-})
+    })
+  
 
 function reset() {
     while (answerOptions.firstChild) {
@@ -141,4 +154,13 @@ function reset() {
     }
 }
 
-    
+
+//If no more questions || timer == 0, display results
+function showResults () {
+    results.style.display = 'block';
+}
+
+
+if ((timeLeft < 1 || quizQuestions.length == questionIndex + 1 ) ) {
+   showResults();
+    }
